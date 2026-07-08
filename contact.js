@@ -21,21 +21,9 @@ if (form) {
     }
 
     try {
-      const response = await fetch('https://turdibekbarber-botfull.onrender.com/contact', {
-        method: 'POST',
-        headers: {
-        'Content-Type': 'application/json',
-      },
-        body: JSON.stringify({
-          name,
-          phone,
-          time,
-          message: 'Navbatga yozildi',
-        }),
-      });
-
-      const result = await response.json();
-      console.log(result);
+      const response = await fetch(
+        `https://turdibekbarber-botfull.onrender.com/contact?name=${encodeURIComponent(name)}&phone=${encodeURIComponent(phone)}&time=${encodeURIComponent(time)}&type=Bron&message=Bron%20qilish%20formasi`
+      );
     } catch (error) {
         console.error('Xatolik:', error);
     }
