@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Turdibek Barber | Bron</title>
+  <meta name="description" content="Barber House bilan bog'lanish, manzil, telefon va takliflar uchun form." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="page">
+    <header class="site-header">
+      <a class="brand" href="index.html">Turdibek Barber</a>
+      <nav class="site-nav">
+        <a href="#services">Xizmatlar</a>
+        <a href="#about">Men haqimda</a>
+        <a href="contact.html" class="nav-cta">Bron qilish</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Biz bilan bog‘laning</p>
+          <h1>Bron, taklif yoki shikoyatlaringizni bizga jo‘natishingiz mumkin.</h1>
+          <p>
+            Manzilimiz, telefon raqamimiz va qulay bog‘lanish usullari shu yerda.
+            Har qanday fikr va taklifni qabul qilamiz.
+          </p>
+        </div>
+      </section>
+
+      <section class="contact-grid">
+        <div class="contact-card">
+          <h3>Kontakt ma'lumotlari</h3>
+          <div class="contact-list">
+            <div>
+              <strong>Telefon</strong>
+              <a href="tel:+998901234567">+998 90 123 45 67</a>
+            </div>
+            <div>
+              <strong>Manzil</strong>
+              <span>Yunusobod tumani, 1-son ko‘cha</span>
+            </div>
+            <div>
+              <strong>Ish vaqti</strong>
+              <span>Har kuni 10:00 — 20:00</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <h3>Bron qilish</h3>
+          <form id="contact-form" method="post" action="/contact">
+            <input type="text" id="name" name="name" placeholder="Ismingiz" required />
+            <input type="tel" id="phone" name="phone" placeholder="Telefon (Masalan: 901234567)" pattern="^\d{9}$"
+              title="Iltimos, telefon raqamingizni kiriting." required />
+            <select id="time" name="time">
+              <option value="10:00">10:00</option>
+              <option value="10:30">10:30</option>
+              <option value="11:00">11:00</option>
+              <option value="11:30">11:30</option>
+              <option value="12:00">12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+              <option value="19:30">19:30</option>
+            </select>
+            <button type="submit" id="submit">Yuborish</button>
+          </form>
+          <p id="form-status" class="form-status" aria-live="polite"></p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> Barber House. Barcha huquqlar himoyalangan.</p>
+    </footer>
+  </div>
+  <script>
+    const year = document.getElementById('year');
+
+    if (year) {
+      year.textContent = new Date().getFullYear();
+    }
+  </script>
+
+  <script src="contact.js"></script>
+</body>
+
+</html>
