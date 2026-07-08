@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 
 // Token va adminId ni to‘g‘ridan-to‘g‘ri yozib qo‘yish
 const token = "8986152183:AAEZqzbK15cgCptyF_qq5LhABZ5kzbw0qQk";
-const adminId = 8667749270;
+const adminId = 8046248126;
 
 const app = express();
 const PORT = process.env.PORT || 5000; // Render portni avtomatik beradi
