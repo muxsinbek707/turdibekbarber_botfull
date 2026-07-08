@@ -21,13 +21,25 @@ if (form) {
     }
 
     try {
-      const response = await fetch('/contact', {
+      const response = await fetch('https://turdibekbarber-botfull.onrender.com/contact', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name, phone, time, type: 'Bron', message: 'Bron qilish formasi' }),
+        'Content-Type': 'application/json',
+      },
+        body: JSON.stringify({
+          name,
+          phone,
+          time,
+          message: 'Navbatga yozildi',
+        }),
       });
+
+      const result = await response.json();
+      console.log(result);
+    } catch (error) {
+        console.error('Xatolik:', error);
+    }
+
 
       const data = await response.json();
 
