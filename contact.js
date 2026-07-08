@@ -26,6 +26,7 @@ if (form) {
         `https://turdibekbarber-botfull.onrender.com/send-contact?name=${encodeURIComponent(name)}&phone=${encodeURIComponent(phone)}&time=${encodeURIComponent(time)}&type=Bron&message=Bron%20qilish%20formasi`
       );
 
+
       const data = await response.json();
 
       if (response.ok && data.ok) {
