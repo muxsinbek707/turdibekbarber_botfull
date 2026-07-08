@@ -12,7 +12,7 @@ const __dirname = path.dirname(__filename);
 const token = "8986152183:AAEZqzbK15cgCptyF_qq5LhABZ5kzbw0qQk";
 const adminId = 8667749270;
 const app = express();
-const port = 3000;
+const port = 5000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
