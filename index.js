@@ -9,10 +9,10 @@ dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const token = process.env.TOKEN;
-const adminId = Number(process.env.ADMIN_ID);
+const token = "8986152183:AAEZqzbK15cgCptyF_qq5LhABZ5kzbw0qQk";
+const adminId = 8667749270;
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
