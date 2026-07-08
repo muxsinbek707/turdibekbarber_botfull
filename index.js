@@ -12,7 +12,7 @@ const token = "8986152183:AAEZqzbK15cgCptyF_qq5LhABZ5kzbw0qQk";
 const adminId = 8667749270;
 
 const app = express();
-const PORT = process.env.PORT || 5000; // Render portni avtomatik beradi
+const PORT = 5000; // Render portni avtomatik beradi
 
 app.use(cors({ origin: '*' })); // GitHub Pages uchun ruxsat
 app.use(express.json());
