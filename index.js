@@ -2,36 +2,28 @@ import express from 'express';
 import TelegramBot from 'node-telegram-bot-api';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import dotenv from 'dotenv';
-
-dotenv.config();
+import cors from 'cors';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Token va adminId ni to‘g‘ridan-to‘g‘ri yozib qo‘yish
 const token = "8986152183:AAEZqzbK15cgCptyF_qq5LhABZ5kzbw0qQk";
 const adminId = 8667749270;
-const app = express();
-const port = 5000;
 
+const app = express();
+const PORT = process.env.PORT || 5000; // Render portni avtomatik beradi
+
+app.use(cors({ origin: '*' })); // GitHub Pages uchun ruxsat
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-  if (req.method === 'OPTIONS') {
-    return res.sendStatus(204);
-  }
-  next();
-});
-app.use(express.static(__dirname));
+app.use(express.static(__dirname)); // static fayllar
 
 let bot = null;
 
 const info = `Turdibek barber xizmat ko'rsatish markazi boti.
 Ushbu bot orqali saytdan yuborilgan taklif, shikoyat va bron ma'lumotlarini qabul qilamiz.
-Bron qilish uchunn bron qilish tugmasini bosing.`;
+Bron qilish uchun bron qilish tugmasini bosing.`;
 
 if (token && adminId) {
   bot = new TelegramBot(token, { polling: true });
@@ -47,7 +39,7 @@ if (token && adminId) {
     }
   });
 } else {
-  console.warn('DIQQAT: TOKEN yoki ADMIN_ID atrof-muhit o‘zgaruvchilari .env faylida to‘g‘ri sozlanmagan. Telegram xabarnoma xizmati ishlamaydi.');
+  console.warn('DIQQAT: TOKEN yoki ADMIN_ID kodda to‘g‘ri yozilmagan.');
 }
 
 app.get('/', (_req, res) => {
@@ -78,7 +70,6 @@ app.post('/contact', async (req, res) => {
     if (bot) {
       await bot.sendMessage(adminId, text);
     }
-
     res.json({ ok: true, message: 'Xabaringiz muvaffaqiyatli yuborildi.' });
   } catch (error) {
     console.error('Telegram xabar yuborishda xato:', error);
@@ -86,6 +77,6 @@ app.post('/contact', async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Server ${port}-portda ishlamoqda`);
+app.listen(PORT, () => {
+  console.log(`Server ${PORT}-portda ishlamoqda`);
 });
